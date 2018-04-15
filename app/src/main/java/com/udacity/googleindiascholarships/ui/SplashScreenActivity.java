@@ -52,9 +52,10 @@ public class SplashScreenActivity extends AppCompatActivity {
                     @Override public void onGlobalLayout() {
                         mAppNameView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                         AnimatorSet mAnimatorSet = new AnimatorSet();
-                        mAnimatorSet.playTogether(ObjectAnimator.ofFloat(mAppNameView, "alpha", 0, 1, 1, 1),
-                                ObjectAnimator.ofFloat(mAppNameView, "scaleX", 0.3f, 1.05f, 0.9f, 1),
-                                ObjectAnimator.ofFloat(mAppNameView, "scaleY", 0.3f, 1.05f, 0.9f, 1));
+                        mAnimatorSet.playTogether(
+                            ObjectAnimator.ofFloat(mAppNameView, "alpha", 0, 1, 1, 1),
+                            ObjectAnimator.ofFloat(mAppNameView, "scaleX", 0.3f, 1.05f, 0.9f, 1),
+                            ObjectAnimator.ofFloat(mAppNameView, "scaleY", 0.3f, 1.05f, 0.9f, 1));
                         mAnimatorSet.setDuration(2000);
                         mAnimatorSet.start();
                     }
@@ -64,9 +65,10 @@ public class SplashScreenActivity extends AppCompatActivity {
                     @Override public void onGlobalLayout() {
                         mAppLogoView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                         AnimatorSet mAnimatorSet = new AnimatorSet();
-                        mAnimatorSet.playTogether(ObjectAnimator.ofFloat(mAppLogoView, "alpha", 0, 1, 1, 1),
-                                ObjectAnimator.ofFloat(mAppLogoView, "scaleX", 0.3f, 1.05f, 0.9f, 1),
-                                ObjectAnimator.ofFloat(mAppLogoView, "scaleY", 0.3f, 1.05f, 0.9f, 1));
+                        mAnimatorSet.playTogether(
+                            ObjectAnimator.ofFloat(mAppLogoView, "alpha", 0, 1, 1, 1),
+                            ObjectAnimator.ofFloat(mAppLogoView, "scaleX", 0.3f, 1.05f, 0.9f, 1),
+                            ObjectAnimator.ofFloat(mAppLogoView, "scaleY", 0.3f, 1.05f, 0.9f, 1));
                         mAnimatorSet.setDuration(2000);
                         mAnimatorSet.start();
                     }
