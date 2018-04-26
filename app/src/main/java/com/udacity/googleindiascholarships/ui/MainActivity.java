@@ -1,6 +1,6 @@
 package com.udacity.googleindiascholarships.ui;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -23,6 +23,7 @@ import com.udacity.googleindiascholarships.R;
 import com.udacity.googleindiascholarships.challenges.ui.ChallengesFragment;
 import com.udacity.googleindiascholarships.community.ui.CommunityFragment;
 import com.udacity.googleindiascholarships.members.ui.MembersFragment;
+import com.udacity.googleindiascholarships.profile.ui.ProfileActivity;
 import com.udacity.googleindiascholarships.projects.ui.ProjectsFragment;
 import com.udacity.googleindiascholarships.quizzes.ui.QuizzesFragment;
 import com.udacity.googleindiascholarships.stories.ui.StoriesFragment;
@@ -107,10 +108,12 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if(id == R.id.action_profile) {
+            Intent intent = new Intent(MainActivity.this , ProfileActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

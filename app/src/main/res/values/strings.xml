@@ -33,5 +33,7 @@
     <string name="sign_in">Sign In</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="reset_here">Reset here.</string>
+    <string name="action_profile">Profile</string>
+    <string name="title_profile_activity">Profile</string>
 
 </resources>

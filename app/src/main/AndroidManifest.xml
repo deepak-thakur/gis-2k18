@@ -33,6 +33,13 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
+        <activity
+            android:name=".profile.ui.ProfileActivity"
+            android:label="@string/title_profile_activity"
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
