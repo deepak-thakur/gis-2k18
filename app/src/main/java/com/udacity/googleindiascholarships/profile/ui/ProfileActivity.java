@@ -19,6 +19,7 @@ public class ProfileActivity extends AppCompatActivity  {
     private ViewPager viewPager;
     private Toolbar toolbar;
     private TabPagerAdapter tabPagerAdapter;
+    private TabLayout tabLayout;
     private FragmentManager fragmentManager;
 
     @Override
@@ -41,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity  {
         tabPagerAdapter = new TabPagerAdapter(fragmentManager);
         viewPager.setAdapter(tabPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
     }
