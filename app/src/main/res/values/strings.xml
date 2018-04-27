@@ -41,5 +41,14 @@
     <string name="string_content_description">Member Profile Photo</string>
 
     <string name="featured_story_sample_description">"25 Android libraries you definitely want to try out in early 2017"</string>
+    <string name="profile_gis_story_sample_description">"The journey of wanderer turned an Android Developer"</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_url">https://github.com/knightcube</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_url">https://github.com/knightcube</string>
 
 </resources>

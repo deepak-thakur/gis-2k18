@@ -5,20 +5,19 @@
     android:layout_width="300dp"
     android:layout_height="150dp"
     app:cardCornerRadius="5dp"
-    android:elevation="@dimen/card_view_elevation"
+    android:elevation="5dp"
     android:layout_margin="10dp">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <ImageView
-            android:id="@+id/iv_featured_story_image"
+            android:id="@+id/iv_profile_gis_story_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/bg_gradient"
-            android:scaleType="centerCrop" />
-
+            android:src="@color/darkBlue"
+            android:scaleType="centerCrop"
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -32,17 +31,17 @@
 
 
                 <ImageView
-                    android:id="@+id/iv_featured_story_profile_pic"
+                    android:id="@+id/iv_profile_gis_story_profile_pic"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/gis_logo"
                     android:layout_centerVertical="true"/>
 
                 <TextView
-                    android:id="@+id/tv_featured_story_profile_name"
+                    android:id="@+id/tv_profile_gis_story_profile_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Akshit"
+                    android:text="Vineeth Reddy"
                     android:textColor="@color/white"
                     android:maxLines="1"
                     android:ellipsize="end"
@@ -50,11 +49,11 @@
                     android:paddingLeft="10dp"/>
             </LinearLayout>
             <TextView
-                android:id="@+id/tv_featured_story_title"
+                android:id="@+id/tv_profile_gis_story_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/featured_story_sample_description"
+                android:text="@string/profile_gis_story_sample_description"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="15sp"
@@ -64,7 +63,7 @@
                 android:padding="10dp"
                 android:layout_weight="1"/>
             <TextView
-                android:id="@+id/iv_featured_story_date"
+                android:id="@+id/iv_profile_gis_story_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="READ"
@@ -77,12 +76,6 @@
 
 
     </FrameLayout>
-
-
-
-
-
-
 
 
 
