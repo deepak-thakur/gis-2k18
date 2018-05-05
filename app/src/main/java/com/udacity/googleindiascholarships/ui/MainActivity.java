@@ -1,7 +1,10 @@
 package com.udacity.googleindiascholarships.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,15 +18,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.google.firebase.auth.FirebaseAuth;
 import com.udacity.googleindiascholarships.R;
 import com.udacity.googleindiascholarships.challenges.ui.ChallengesFragment;
 import com.udacity.googleindiascholarships.community.ui.CommunityFragment;
 import com.udacity.googleindiascholarships.members.ui.MembersFragment;
-import com.udacity.googleindiascholarships.profile.ui.ProfileActivity;
 import com.udacity.googleindiascholarships.projects.ui.ProjectsFragment;
 import com.udacity.googleindiascholarships.quizzes.ui.QuizzesFragment;
 import com.udacity.googleindiascholarships.stories.ui.StoriesFragment;
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity
 
     Spinner spCourses;
     ImageView ivNavHeader;
+    ArrayAdapter<CharSequence> courseSpinnerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,14 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         ivNavHeader = navigationView.getHeaderView(0).findViewById(R.id.ivNavHeader);
         spCourses = navigationView.getHeaderView(0).findViewById(R.id.spCourses);
+
+        // Instantiating the custom spinner to change the Dropdown layout resources
+        courseSpinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.array_course_titles,
+                R.layout.custom_spinner_list_item);
+        courseSpinnerAdapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        spCourses.setAdapter(courseSpinnerAdapter);
+
         spCourses.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
@@ -70,6 +83,23 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+//        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+//        if(firebaseAuth.getCurrentUser()==null){
+//            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//            startActivity(intent);
+//        }
+
+//         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+//         if(firebaseAuth.getCurrentUser()==null){
+//             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//             startActivity(intent);
+//         }
+
+    }
     private void setIvNavHeader(String text) {
 
         TextDrawable drawable = TextDrawable
@@ -108,12 +138,10 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }else if(id == R.id.action_profile) {
-            Intent intent = new Intent(MainActivity.this , ProfileActivity.class);
-            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -126,6 +154,21 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         displaySelectedScreen(id);
         return true;
+    }
+
+    // Sets the shadow for Toolbar and AppBarLayout
+    private void setToolbarShadow(int id){
+        AppBarLayout appBar = findViewById(R.id.appBar);
+
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+            // If Community section is opened, the AppBarLayout should have no shadows
+            // to prevent shadow overlapping with TabLayout
+            if (id == R.id.nav_community) {
+                appBar.setElevation(0);
+            } else {
+                appBar.setElevation(6);
+            }
+        }
     }
 
     private void displaySelectedScreen(int id){
@@ -162,6 +205,8 @@ public class MainActivity extends AppCompatActivity
             ft.replace(R.id.content_main, fragment).addToBackStack(null);
             ft.commit();
         }
+
+        setToolbarShadow(id);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
