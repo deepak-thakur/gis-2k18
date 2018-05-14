@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
@@ -41,6 +42,8 @@ public class ProjectsFragment extends android.support.v4.app.Fragment {
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mFirebaseDatabaseReference;
 
+    ProgressBar mProgressBar;
+
 
     @Nullable
     @Override
@@ -50,6 +53,15 @@ public class ProjectsFragment extends android.support.v4.app.Fragment {
 
         projectsRecyclerView = rootView.findViewById(R.id.projectsRecyclerView);
         createProjectBtn = rootView.findViewById(R.id.create_projects_fab_btn);
+        projectsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        createProjectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),CreateProjectActivity.class);
+                startActivity(intent);
+            }
+        });
+
         projectList = new ArrayList<Project>();
         projectsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
         createProjectBtn.setOnClickListener(new View.OnClickListener() {
@@ -60,11 +72,30 @@ public class ProjectsFragment extends android.support.v4.app.Fragment {
             }
         });
 
-       /* projectList = new ArrayList<Project>();
-        projectList.add(new Project("GIS APP", R.drawable.gis_placeholder));
-        projectList.add(new Project("EXPLORE INDIA", R.drawable.explore_india_placeholder));
-        projectList.add(new Project("QUIZ APP", R.drawable.quiz_placeholder));
-        projectList.add(new Project("BLOOD DONATION", R.drawable.blooddonation_placholder));*/
+        projectList = new ArrayList<Project>();
+        projectsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        createProjectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),CreateProjectActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        projectList = new ArrayList<Project>();
+        projectsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        createProjectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),CreateProjectActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        projectList = new ArrayList<Project>();
+        projectsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        mProgressBar = rootView.findViewById(R.id.progress_barProjects);
+        createProjectBtn.setVisibility(View.GONE);
 
         readProjectsFirebase();
 
@@ -84,11 +115,10 @@ public class ProjectsFragment extends android.support.v4.app.Fragment {
 
                     Project project = projectSnapshot.getValue(Project.class);
                     projectList.add(project);
-
                 }
-
                 projectsAdapter = new ProjectsAdapter(getContext(), projectList);
                 projectsRecyclerView.setAdapter(projectsAdapter);
+                mProgressBar.setVisibility(View.GONE);
 
             }
 
@@ -100,8 +130,7 @@ public class ProjectsFragment extends android.support.v4.app.Fragment {
 
 
     }
-
-
+    
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

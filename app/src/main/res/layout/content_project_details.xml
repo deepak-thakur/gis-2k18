@@ -28,7 +28,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:orientation="horizontal">
 
                     <ImageView
@@ -36,20 +35,55 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_weight="1"
-                        android:src="@drawable/gis_logo" />
+                        android:src="@drawable/ic_gis_logo" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
 
 
-                    <TextView
-                        android:id="@+id/tv_projectTitleDetails"
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_weight="1"
-                        android:text="Google India Scholarship 2018(GIS app)"
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tv_projectTitleDetails"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="1"
+                            android:text="Google India Scholarship 2018(GIS app)"
+                            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_marginTop="4dp"
+                            android:layout_width="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:text="Status:"/>
+                            <TextView
+                                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+                                android:id="@+id/project_Status"
+                                android:layout_marginLeft="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Under development"/>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -58,14 +92,16 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <ImageButton
+                            android:id="@+id/ib_one_fav_project"
                             android:layout_marginTop="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="center"
                             android:layout_gravity="end"
                             android:padding="10dp"
-                            android:src="@drawable/ic_favorite" />
-
+                            android:src="@drawable/ic_favorite"
+                            android:background="@color/projectDetailsBackground"/>
 
                     </LinearLayout>
 
@@ -128,11 +164,23 @@
                     android:textStyle="bold" />
 
 
-                <fragment
-                    android:id="@+id/contact_fragments"
-                    android:name="com.udacity.googleindiascholarships.projects.ui.ContactFragment"
+                <FrameLayout
+                    android:id="@+id/contactFragment_Container"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp" />
+                    android:layout_height="wrap_content">
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_contactRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                    </android.support.v7.widget.RecyclerView>
+
+
+                </FrameLayout>
+
+
+
 
                 <View
                     android:layout_width="fill_parent"
@@ -162,11 +210,14 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <ImageButton
+                            android:id="@+id/ib_share_project_url"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="center"
                             android:layout_gravity="center"
                             android:layout_weight="1"
+                            android:background="@color/projectDetailsBackground"
                             android:padding="16dp"
                             android:src="@drawable/ic_share" />
 
@@ -188,12 +239,15 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <ImageButton
+                            android:id="@+id/ib_two_fav_project"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="center"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:padding="16dp"
+                            android:background="@color/projectDetailsBackground"
                             android:src="@drawable/ic_favorite" />
 
 

@@ -1,12 +1,12 @@
 package com.udacity.googleindiascholarships.ui;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
@@ -23,10 +23,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.amulyakhare.textdrawable.TextDrawable;
-import com.google.firebase.auth.FirebaseAuth;
 import com.udacity.googleindiascholarships.R;
 import com.udacity.googleindiascholarships.challenges.ui.ChallengesFragment;
 import com.udacity.googleindiascholarships.community.ui.CommunityFragment;
+import com.udacity.googleindiascholarships.currentuser.ui.UserDetailsActivity;
 import com.udacity.googleindiascholarships.members.ui.MembersFragment;
 import com.udacity.googleindiascholarships.projects.ui.ProjectsFragment;
 import com.udacity.googleindiascholarships.quizzes.ui.QuizzesFragment;
@@ -37,6 +37,8 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private String currentVisibleFragment =HomeFragment.class.getSimpleName();
 
     Spinner spCourses;
     ImageView ivNavHeader;
@@ -81,24 +83,19 @@ public class MainActivity extends AppCompatActivity
                 setIvNavHeader(getString(R.string.NA));
             }
         });
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_main, new HomeFragment()).commit();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
 //        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 //        if(firebaseAuth.getCurrentUser()==null){
 //            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
 //            startActivity(intent);
 //        }
-
-//         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-//         if(firebaseAuth.getCurrentUser()==null){
-//             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//             startActivity(intent);
-//         }
-
     }
     private void setIvNavHeader(String text) {
 
@@ -129,7 +126,9 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        // Returning false so that the menu doesn't get inflated as the Settings are been implemented
+        // through Navigation menu
+        return false;
     }
 
     @Override
@@ -176,7 +175,9 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null ;
 
         switch (id){
-
+            case R.id.nav_home:
+                fragment = new HomeFragment();
+                break;
             case R.id.nav_members:
                 fragment = new MembersFragment();
                 break;
@@ -195,14 +196,20 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_community:
                 fragment = new CommunityFragment();
                 break;
+            case R.id.nav_user_profile:
+                Intent profileActivityIntent = new Intent(this, UserDetailsActivity.class);
+
+                startActivity(profileActivityIntent);
+                break;
             case R.id.nav_settings:
                 fragment = new SettingsFragment();
                 break;
         }
 
-        if(fragment != null){
+        if(fragment != null && !fragment.getClass().getSimpleName().equals(currentVisibleFragment)){
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_main, fragment).addToBackStack(null);
+            ft.replace(R.id.content_main, fragment, "TAG").addToBackStack(null);
+            currentVisibleFragment =fragment.getClass().getSimpleName();
             ft.commit();
         }
 

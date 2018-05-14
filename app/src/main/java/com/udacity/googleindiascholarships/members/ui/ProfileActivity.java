@@ -1,6 +1,8 @@
 package com.udacity.googleindiascholarships.members.ui;
 
+import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +10,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.udacity.googleindiascholarships.R;
 import com.udacity.googleindiascholarships.members.ui.adapters.ProfileViewPagerAdapter;
+import com.udacity.googleindiascholarships.utils.Constants;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -29,13 +33,13 @@ public class ProfileActivity extends AppCompatActivity {
         vpProfile = (ViewPager) findViewById(R.id.vpProfile);
         tabsProfile = (TabLayout)findViewById(R.id.tabsProfile);
 
+
         if(getSupportActionBar()!=null) {
             getSupportActionBar().setTitle("Phase 1");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         collapsingToolbarLayoutProfile = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout_profile);
-
 
         vpProfile.setOffscreenPageLimit(3);
         setupViewPager();

@@ -40,7 +40,6 @@
 
     <string name="profile_short_description_sample">"Hi! My name is Vineeth Reddy, I’m a passionate Android developer and I enjoy creating apps that create an impact in the world. Contact me at vineethreddy@gmail.com"</string>
 
-
     <string name="profile_skills_sample">XML , ANDROID , FIREBASE , UI , ADOBE </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -145,5 +144,55 @@
     <string name="project_name">Project Name</string>
     <string name="project_logo_url">Project Logo Url</string>
     <string name="project_description">Project Description</string>
+    <string name="title_activity_challenges_details">ChallengesDetails</string>
+    <string name="text_user_name">Vineeth Reddy</string>
+    <string name="About">About</string>
+
+    <!--Setting's Preference string resources-->
+    <string name="pref_notification_title">Get Notifications</string>
+    <string name="pref_notification_key">notifications</string>
+    <string name="pref_notification_summary_on">Enabled</string>
+    <string name="pref_notification_summary_off">Disabled</string>
+
+    <string name="pref_dialog_title">Are you sure ?</string>
+    <string name="pref_dialog_content">This will sign you out from device.</string>
+    <string name="pref_dialog_positive_btn_text">Yes</string>
+    <string name="pref_dialog_title_label">Sign Out</string>
+    <string name="pref_dialog_negative_btn_text">No</string>
+    <string name="pref_dialog_key">custom_sign_out_pref_dialog</string>
+
+    <!--Home Screen resources-->
+    <string name="announcement_summary">All of you have been great so far in this scholarship journey, I wish you all the best for your future endeavours. Stay Hungry, Stay Udacious!</string>
+    <string name="announcement_title">Best of luck for your future</string>
+    <string name="announcement_time">17 hours ago</string>
+    <string name="announcement_author">Akshit Jain</string>
+
+    <string name="quiz_announcement_summary">A short quiz on SQLite concepts to give you a quick revision of the concepts.</string>
+    <string name="quiz_announcement_title">New Quiz is out!</string>
+    <string name="quiz_announcement_deadline">14th May</string>
+    <string name="quiz_announcement_lesson">SQLite</string>
+
+    <string name="blog_title">Google India Challenge Scholarship: Nearing the end of a great journey</string>
+    <string name="blog_author">Sudhanshu Vohra</string>
+
+    <!--Main Activity navigation bar string resource -->
+    <string name="nav_item_home">Home</string>
+    <string name="nav_item_members">Members</string>
+    <string name="nav_item_gis_stories">GIS Stories</string>
+    <string name="nav_item_projects">Projects</string>
+    <string name="nav_item_challenges">Challenges</string>
+    <string name="nav_item_community">Community</string>
+    <string name="nav_item_quizzes">Quizzes</string>
+    <string name="nav_item_my_profile">My Profile</string>
+    <string name="nav_item_settings">Settings</string>
+
+
+    <!--Community Dialog Strings-->
+    <string name="community_dialog_link_shared_by">Community</string>
+    <string name="community_dialog_link_preview_title">Link Preview Title</string>
+    <string name="community_dialog_btn_open_text">Open</string>
+    <string name="community_dialog_btn_close_text">Close</string>
+
+
 
 </resources>

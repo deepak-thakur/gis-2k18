@@ -4,10 +4,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_gis_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -34,6 +35,16 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.udacity.googleindiascholarships"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity
             android:name=".members.ui.Phase1Activity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -48,19 +59,30 @@
             android:label="@string/title_activity_project_details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".currentuser.ui.UserDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".currentuser.ui.ProfilePictureDisplayActivity" />
+        <activity
             android:name=".projects.ui.CreateProjectActivity"
             android:label="@string/title_activity_create_project"
             android:parentActivityName=".ui.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:parentActivityName=".ui.MainActivity"
             android:name=".community.ui.ShareLinkActivity"
             android:label="@string/title_activity_share_link"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".community.ui.ShareLinkActivity"
+            android:label="@string/title_activity_share_link"
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".challenges.ui.ChallengesDetails"
+            android:label="@string/title_activity_challenges_details"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".challenges.ui.ChallengeUserInputDetails"></activity>
     </application>
 
 </manifest>

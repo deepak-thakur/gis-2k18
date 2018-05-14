@@ -25,7 +25,7 @@
           android:layout_height="wrap_content"
           android:text="@string/profile_short_description_sample"
           android:textColor="#2175BC"
-          android:padding="5dp"/>
+          android:padding="5dp" />
   </LinearLayout>
 
     <LinearLayout

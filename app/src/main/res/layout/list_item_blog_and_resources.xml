@@ -25,7 +25,7 @@
                 android:id="@+id/link_thumbnail"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/gis_logo" />
+                android:src="@drawable/ic_gis_logo" />
 
             <TextView
                 android:id="@+id/link_shared_by"
@@ -36,22 +36,9 @@
                 android:maxLines="1"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:text="Rajat Kumar Gupta"
+                android:text="Community"
                 android:textColor="@color/white" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/link_display_url"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:padding="8dp"
-            android:text="@string/default_url"
-            android:textColor="@color/white"
-            android:layout_below="@+id/link_header"
-            android:textSize="14sp"
-            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/link_display_description"
@@ -61,22 +48,64 @@
             android:padding="8dp"
             android:text="@string/default_description"
             android:textColor="@color/white"
-            android:layout_below="@+id/link_display_url"
+            android:layout_below="@id/link_header"
             android:textSize="14sp" />
-
         <TextView
-            android:id="@+id/link_open_btn"
+            android:id="@+id/link_display_url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:padding="8dp"
+            android:text="@string/default_url"
+            android:textColor="@color/white"
             android:layout_below="@+id/link_display_description"
-            android:paddingEnd="8dp"
-            android:layout_marginBottom="4dp"
-            android:drawableEnd="@drawable/ic_open"
-            android:text="Open in browser"
-            android:textColor="@color/colorAccent"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:background="@color/colorAccent"
+            android:layout_below="@+id/link_display_url"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/link_preview_btn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:layout_below="@+id/link_display_url"
+
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Preview Link"
+                android:textColor="#FFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/link_open_btn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:layout_below="@+id/link_display_url"
+                android:layout_toRightOf="@+id/link_preview_btn"
+                android:layout_toEndOf="@+id/link_preview_btn"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginTop="4dp"
+                android:drawableEnd="@drawable/ic_open"
+                android:text="Open in browser"
+                android:textColor="#FFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

@@ -8,9 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.leocardz.link.preview.library.LinkPreviewCallback;
+import com.leocardz.link.preview.library.SourceContent;
+import com.leocardz.link.preview.library.TextCrawler;
 import com.udacity.googleindiascholarships.R;
+import com.udacity.googleindiascholarships.community.ui.ShareLinkActivity;
 import com.udacity.googleindiascholarships.community.ui.entities.ExternalLinks;
+import com.udacity.googleindiascholarships.utils.CustomDialog;
 
 import java.util.List;
 
@@ -36,8 +42,9 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.LinkPreviewVie
     }
 
     @Override
-    public void onBindViewHolder(LinkPreviewViewHolder holder, int position) {
+    public void onBindViewHolder(final LinkPreviewViewHolder holder, int position) {
         final ExternalLinks currentExternalLink = mLinkItems.get(position);
+
         holder.previewLinkText.setText(currentExternalLink.getLinkUrl());
         holder.previewLinkPostedBy.setText(currentExternalLink.getLinkPostedBy());
         holder.previewLinkDescription.setText(currentExternalLink.getLinkDescription());
@@ -46,6 +53,15 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.LinkPreviewVie
             public void onClick(View view) {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(currentExternalLink.getLinkUrl()));
                 mContext.startActivity(browserIntent);
+            }
+        });
+        holder.previewLinkOpenPreviewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                CustomDialog customDialog= new CustomDialog(mContext,currentExternalLink);
+                customDialog.show();
+
             }
         });
     }
@@ -60,6 +76,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.LinkPreviewVie
         public TextView previewLinkPostedBy;
         public TextView previewLinkDescription;
         public TextView previewLinkOpenInBrowser;
+        public TextView previewLinkOpenPreviewBtn;
 
         public LinkPreviewViewHolder(View itemView) {
             super(itemView);
@@ -67,6 +84,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.LinkPreviewVie
             previewLinkPostedBy = (TextView) itemView.findViewById(R.id.link_shared_by);
             previewLinkDescription = (TextView)itemView.findViewById(R.id.link_display_description);
             previewLinkOpenInBrowser = (TextView)itemView.findViewById(R.id.link_open_btn);
+            previewLinkOpenPreviewBtn = itemView.findViewById(R.id.link_preview_btn);
         }
     }
 }
